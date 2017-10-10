@@ -56,4 +56,10 @@ public class RecipeServiceImpl implements RecipeService{
 		return recipeToCommand.convert(saveRecipe);
 	}
 
+	@Override
+	@Transactional
+	public RecipeCommand findCommandById(Long id) {
+		return recipeToCommand.convert(findById(id));
+	}
+
 }
