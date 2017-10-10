@@ -31,7 +31,8 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
 			command.setAmount(source.getAmount());
 			command.setDescription(source.getDescription());
 			command.setMeasure(converter.convert(source.getMeasure()));
-			
+			if(source.getRecipe() != null)
+				command.setRecipe(source.getRecipe().getId());
 		return command;
 	}
 

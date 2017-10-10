@@ -5,9 +5,11 @@ import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 public class IngredientCommand {
 
@@ -15,6 +17,6 @@ public class IngredientCommand {
 	private String description;
 	private BigDecimal amount;
 	
-	private RecipeCommand recipe;
+	private Long recipe;
 	private UnitOfMeasureCommand measure;
 }

@@ -55,7 +55,6 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand>{
 							ingredient -> command.getIngredients().add(ingredientConverter.convert(ingredient))
 						);
 			}
-			
 		return command;
 	}
 

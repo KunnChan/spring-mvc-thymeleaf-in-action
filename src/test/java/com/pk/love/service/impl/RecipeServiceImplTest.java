@@ -69,8 +69,18 @@ public class RecipeServiceImplTest {
 		assertEquals(recipes.size(), 1);
 		
 		verify(recipeRepository, times(1)).findAll();
+	}
+	
+	public void testDeleteBy() throws Exception{
+		//given
+		Long idToDelete = 2L;
 		
+		//when
+		recipeService.deleteById(idToDelete);
+		// no 'when()', since method has void return type
 		
+		//then
+		verify(recipeRepository, times(1)).deleteById(idToDelete);
 	}
 
 }
