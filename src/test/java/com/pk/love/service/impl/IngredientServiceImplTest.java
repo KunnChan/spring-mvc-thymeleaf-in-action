@@ -38,7 +38,7 @@ public class IngredientServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		ingredientService = new IngredientServiceImpl(ingredientToCommand, recipeRepository);
+		ingredientService = new IngredientServiceImpl(ingredientToCommand, null, recipeRepository, null);
 	}
 
 	@Test
