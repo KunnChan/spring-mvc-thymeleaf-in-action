@@ -12,6 +12,12 @@ import lombok.Synchronized;
 @Component
 public class IngredientCommandToIngredient implements Converter<IngredientCommand, Ingredient>{
 
+	private final UnitOfMeasureCommandToUnitOfMeasure uomCommandToUom;
+	
+	public IngredientCommandToIngredient(UnitOfMeasureCommandToUnitOfMeasure uomCommandToUom) {
+		this.uomCommandToUom = uomCommandToUom;
+	}
+
 	@Synchronized
 	@Nullable
 	@Override
@@ -23,7 +29,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
 		ingre.setId(source.getId());
 		ingre.setDescription(source.getDescription());
 		ingre.setAmount(source.getAmount());
-		
+		ingre.setMeasure(uomCommandToUom.convert(source.getMeasure()));
 		return ingre;
 	}
 

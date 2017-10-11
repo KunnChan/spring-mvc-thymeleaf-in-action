@@ -71,6 +71,7 @@ public class RecipeServiceImplTest {
 		verify(recipeRepository, times(1)).findAll();
 	}
 	
+	@Test
 	public void testDeleteBy() throws Exception{
 		//given
 		Long idToDelete = 2L;

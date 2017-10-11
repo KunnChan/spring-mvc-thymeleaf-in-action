@@ -39,7 +39,6 @@ public class IndexControllerTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		controller = new IndexController(recipeService);
-		
 	}
 	@Test
 	public void testMockMvc() throws Exception{
@@ -68,11 +67,12 @@ public class IndexControllerTest {
 	    //then
 		assertEquals("index", viewName);
 		verify(recipeService, times(1)).getRecipes();
-	//	verify(model, times(2)).addAttribute("recipes", argumentCaptor.capture());
+		verify(model, times(1)).addAttribute("recipes", argumentCaptor.capture());
 		
 		Set<Recipe> result = argumentCaptor.getValue();
 		
-		assertEquals(2, result.size());
+		assertEquals(1, result.size());
 	}
+	
 
 }

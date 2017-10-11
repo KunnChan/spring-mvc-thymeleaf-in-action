@@ -2,8 +2,7 @@ package com.pk.love.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import com.pk.love.service.RecipeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +17,7 @@ public class IndexController {
 		this.recipeService = recipeService;
 	}
 
-	@RequestMapping({"","/","/index"})
+	@GetMapping({"","/","/index"})
 	public String index(Model model){
 		log.debug("Index log work");
 		model.addAttribute("recipes", recipeService.getRecipes());
