@@ -38,6 +38,7 @@
 							</div>
 							<div class="col-md-6">
 								<img alt="images" src="../../static/images/monkey.jpg"
+									th:if="${recipe.image != null}"
 									th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" width="200" height="200">
 							</div>
 						</div>

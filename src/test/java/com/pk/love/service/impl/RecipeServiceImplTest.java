@@ -6,7 +6,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
+import static org.mockito.Matchers.*;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -19,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 import com.pk.love.converters.RecipeCommandToRecipe;
 import com.pk.love.converters.RecipeToRecipeCommand;
 import com.pk.love.domain.Recipe;
+import com.pk.love.exceptions.NotFoundException;
 import com.pk.love.repository.RecipeRepository;
 
 public class RecipeServiceImplTest {
@@ -54,6 +55,17 @@ public class RecipeServiceImplTest {
 		
 		verify(recipeRepository, times(1)).findById(1L);
 		verify(recipeRepository, never()).findAll();
+	}
+	
+	@Test(expected = NotFoundException.class)
+	public void testGetRecipeByIdNotFound() throws Exception{
+		Optional<Recipe> recipeOptional = Optional.empty();
+		
+		when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+		
+		Recipe recipeReturned = recipeService.findById(1L);
+		
+		//should go boom
 	}
 
 	@Test

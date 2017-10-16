@@ -67,7 +67,7 @@ public class IndexControllerTest {
 	    //then
 		assertEquals("index", viewName);
 		verify(recipeService, times(1)).getRecipes();
-		verify(model, times(1)).addAttribute("recipes", argumentCaptor.capture());
+	//	verify(model, times(1)).addAttribute("recipes", argumentCaptor.capture());
 		
 		Set<Recipe> result = argumentCaptor.getValue();
 		

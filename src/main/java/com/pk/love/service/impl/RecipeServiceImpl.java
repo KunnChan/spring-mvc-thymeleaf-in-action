@@ -11,6 +11,7 @@ import com.pk.love.command.RecipeCommand;
 import com.pk.love.converters.RecipeCommandToRecipe;
 import com.pk.love.converters.RecipeToRecipeCommand;
 import com.pk.love.domain.Recipe;
+import com.pk.love.exceptions.NotFoundException;
 import com.pk.love.repository.RecipeRepository;
 import com.pk.love.service.RecipeService;
 
@@ -43,7 +44,9 @@ public class RecipeServiceImpl implements RecipeService{
 	@Override
 	public Recipe findById(Long id) {
 		Optional<Recipe> recipeOptional = recipeRepository.findById(id);
-		if(!recipeOptional.isPresent()) throw new RuntimeException("Recipe with id :  "+ id + "Not Found");
+		if(!recipeOptional.isPresent()){
+			throw new NotFoundException("Recipe with id :  "+ id + " Not Found");
+		}
 		return recipeOptional.get();
 	}
 

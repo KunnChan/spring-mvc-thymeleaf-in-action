@@ -89,6 +89,7 @@ public class IngredientServiceImplTest {
 		Optional<Recipe> recipeOptional = Optional.of(new Recipe());
 		
 		Recipe savedRecipe = new Recipe();
+		savedRecipe.setId(2L);
 		savedRecipe.addIngredient(new Ingredient());
 		savedRecipe.getIngredients().iterator().next().setId(3L);
 		
